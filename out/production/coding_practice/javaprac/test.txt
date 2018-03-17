@@ -1,0 +1,5 @@
+When you insert
+ a new entry
+  on the Map, it
+  checks whether
+   the hashCode is
