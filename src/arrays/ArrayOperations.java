@@ -307,6 +307,33 @@ public class ArrayOperations {
         a[i] = a[j];
         a[j] = temp;
     }
+
+    /**
+     * https://leetcode.com/problems/house-robber/description/
+     * @param num [2,3,4,1,6,9,6,3]
+     * @return 18
+     */
+    public int rob(int[] num) {
+
+        if(num==null || num.length == 0)
+            return 0;
+
+        int even = 0;
+        int odd = 0;
+
+        for (int i = 0; i < num.length; i++) {
+            if (i % 2 == 0) {
+                even += num[i];
+                even = even > odd ? even : odd;
+            } else {
+                odd += num[i];
+                odd = even > odd ? even : odd;
+            }
+        }
+
+        return even > odd ? even : odd;
+
+    }
     public static void main(String[] args){
         ArrayOperations arrayOperations = new ArrayOperations();
 
@@ -347,5 +374,7 @@ public class ArrayOperations {
         arrayOperations.intpermute(new int[]{1,2,2}).forEach(integers -> {
             System.out.println(integers);
         });
+
+        System.out.println(arrayOperations.rob(new int[]{2,3,4,1,6,9,6,3}));
     }
 }
